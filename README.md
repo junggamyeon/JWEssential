@@ -215,21 +215,6 @@ Features:
 
 ---
 
-### 📋 Miscellaneous
-
-Additional commands:
-
-- `/list`
-- `/help`
-
-Features:
-
-- Online player list
-- Dynamic help menu
-- Permission-aware help pages
-
----
-
 ## 📦 Dependencies
 
 Required plugins:
