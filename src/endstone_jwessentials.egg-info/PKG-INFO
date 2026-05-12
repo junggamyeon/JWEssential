@@ -1,3 +1,17 @@
+Metadata-Version: 2.4
+Name: endstone-jwessentials
+Version: 1.0.0
+Summary: JWEssentials - Essential commands plugin for EndstoneMC servers, ported from EssentialsX
+Author: JWDev
+License-Expression: MIT
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: endstone>=0.10.0
+Requires-Dist: aiosqlite>=0.20.0
+Requires-Dist: pyyaml>=6.0
+Dynamic: license-file
+
 # JWEssentials
 
 A comprehensive essential commands plugin for EndstoneMC servers, ported from EssentialsX to Python.
@@ -18,9 +32,15 @@ A comprehensive essential commands plugin for EndstoneMC servers, ported from Es
 
 ## Dependencies
 
-- [JWEconomy](https://github.com/junggamyeon/JWEconomy)
-- [InventoryUI](https://github.com/junggamyeon/endstone-inventoryui)
+- **JWEconomy** (required) - Economy integration for balance-based features
+- **Endstone** >= 0.10.0
 
+## Installation
+
+1. Install `endstone>=0.10.0`, `aiosqlite>=0.20.0`, `pyyaml>=6.0`
+2. Install JWEconomy plugin first
+3. Install JWEssentials plugin
+4. Restart the server
 
 ## Configuration
 

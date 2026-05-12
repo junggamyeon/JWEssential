@@ -1,0 +1,35 @@
+# JWEssentials Bossbar Configuration
+# ====================================
+#
+# Enable or disable the bossbar and configure its appearance.
+# All title text supports placeholders (see scoreboard.yml for full list).
+#
+# Bossbar appearance options:
+#   color: pink, blue, red, green, yellow, purple, white
+#   style: solid, 6, 10, 12, 20  (6/10/12/20 = segmented)
+#   flags: darken_sky, create_fog  (leave empty to disable)
+#   progress: 0.0 - 1.0  (health bar fill, or just decorative)
+
+# Enable or disable the bossbar feature
+enabled: false
+
+# The bossbar title (supports all placeholders)
+title: "&6&l%server_name% &7| &eOnline: &f%server_online%&7/&f%server_max_players%"
+
+# Bossbar color: pink, blue, red, green, yellow, purple, white
+color: "red"
+
+# Bossbar style: solid, 6, 10, 12, 20
+style: "solid"
+
+# Bossbar flags (optional): darken_sky, create_fog
+# Leave empty list to disable all flags
+flags: []
+
+# Progress (0.0 to 1.0) - health fill or decorative bar fill
+# Set to 1.0 for a full decorative bar
+progress: 1.0
+
+# Auto-refresh interval in seconds (set to 0 to disable auto-refresh)
+# Bossbar will update placeholders at this interval for all players
+auto-refresh-seconds: 5

@@ -1,0 +1,215 @@
+# JWEssentials Messages
+# ======================
+
+prefix: "&6&l[JWEssentials]&r "
+
+# General
+error-generic: "{prefix}&cAn internal error occurred. Please try again."
+player-only: "{prefix}&cThis command can only be used by players."
+no-permission: "{prefix}&cYou do not have permission to do that."
+invalid-arguments: "{prefix}&cInvalid arguments. Usage: {usage}"
+player-not-found: "{prefix}&cPlayer not found: {player}"
+
+# Teleport Commands
+teleport-sent: "{prefix}&aTeleporting to {player}..."
+teleport-player-sent: "{prefix}&aTeleporting {player} to {target}..."
+teleport-pos-sent: "{prefix}&aTeleporting to {x}, {y}, {z} in {world}..."
+teleport-here-sent: "{prefix}&aTeleporting {player} to your location..."
+tp-here: "{prefix}&aYou teleported {player} to your location."
+tp-all: "{prefix}&aTeleporting all players..."
+tp-here-usage: "&c/tphere <player>"
+tp-pos-usage: "&c/tp <x> <y> <z> [world]"
+tp-no-coordinate: "{prefix}&cInvalid coordinates."
+tp-invalid-world: "{prefix}&cWorld '{world}' not found."
+
+# TPA Commands
+tpa-sent: "{prefix}&aYou sent a teleport request to {player}."
+tpa-received: "{prefix}&a{player} would like to teleport to you."
+tpa-type-accept: "&eType &a/tpaccept&e or &a/tpa&e to accept, &c/tpdeny&e to deny."
+tpa-timeout-info: "&7Request expires in {seconds} seconds."
+tpa-already-sent: "{prefix}&cYou already have a pending request to {player}."
+tpa-no-request: "{prefix}&cNo pending teleport request from that player."
+tpa-accepted: "{prefix}&aTeleport request accepted!"
+tpa-accepted-auto: "{prefix}&aTeleport request auto-accepted (teleport enabled)."
+tpa-declined: "{prefix}&cTeleport request declined."
+tpa-cancelled: "{prefix}&cTeleport request cancelled."
+tpa-expired: "{prefix}&cYour teleport request expired."
+teleport-disabled: "{prefix}&cTeleportation is disabled for {player}."
+
+# Home Commands
+home-set: "{prefix}&aHome '{name}' set at {world} ({x}, {y}, {z})."
+home-teleported: "{prefix}&aTeleporting to home '{name}'..."
+home-deleted: "{prefix}&aHome '{name}' deleted."
+home-not-found: "{prefix}&cHome '{name}' not found."
+home-no-homes: "{prefix}&cYou have no homes set."
+home-list: "{prefix}&eYour homes: &f{homes}"
+home-limit-reached: "{prefix}&cYou have reached the maximum of {limit} homes."
+sethome-usage: "&c/sethome [name]"
+home-usage: "&c/home [name]"
+
+# Warp Commands
+warp-set: "{prefix}&aWarp '{name}' set at {world} ({x}, {y}, {z})."
+warp-deleted: "{prefix}&aWarp '{name}' deleted."
+warp-not-found: "{prefix}&cWarp '{name}' not found."
+warp-no-warps: "{prefix}&cNo warps are defined."
+warp-teleported: "{prefix}&aWarping to '{name}'..."
+warp-list-header: "{prefix}&e--- Warps (Page {page}/{max}) ---"
+warp-list: "{prefix}&eWarps: &f{warps}"
+warp-list-count: "{prefix}&eWarps ({total}): Page {page}/{max}"
+
+# Spawn Commands
+spawn-teleported: "{prefix}&aTeleporting to spawn..."
+spawn-set: "{prefix}&aSpawn point set."
+spawn-not-set: "{prefix}&cNo spawn point is set."
+
+# Social Commands
+msg-format: "&7[{sender} -> {receiver}]&f {message}"
+msg-sent: "{prefix}&aMessage sent to {player}."
+reply-no-one: "{prefix}&cNo one to reply to."
+social-spy-enabled: "{prefix}&7Social spy enabled."
+social-spy-disabled: "{prefix}&7Social spy disabled."
+afk-set: "{prefix}&e{player} is now AFK."
+afk-removed: "{prefix}&e{player} is no longer AFK."
+afk-self: "{prefix}&eYou are now AFK."
+afk-self-remove: "{prefix}&eYou are no longer AFK."
+
+# God Mode
+god-enabled: "{prefix}&a{player} is now invincible."
+god-disabled: "{prefix}&c{player} is no longer invincible."
+god-self: "{prefix}&aYou are now invincible."
+god-self-disable: "{prefix}&cYou are no longer invincible."
+
+# Heal / Feed
+heal-success: "{prefix}&aYou have been healed."
+heal-other: "{prefix}&aHealed {player}."
+heal-cooldown: "{prefix}&cYou must wait {seconds} seconds before using this command again."
+feed-success: "{prefix}&aYou have been fed."
+feed-other: "{prefix}&aFed {player}."
+
+# GameMode
+gm-changed: "{prefix}&a{player}'s game mode set to {gamemode}."
+gm-self: "{prefix}&aYour game mode has been set to {gamemode}."
+gm-invalid: "{prefix}&cInvalid game mode: {mode}"
+gm-prohibited: "{prefix}&cYou cannot change to {gamemode} mode."
+
+# Fly / Speed
+fly-enabled: "{prefix}&a{player} can now fly."
+fly-disabled: "{prefix}&c{player} can no longer fly."
+fly-self: "{prefix}&aFlight enabled."
+fly-self-disable: "{prefix}&cFlight disabled."
+speed-reset: "{prefix}&aSpeed reset to default."
+speed-set: "{prefix}&a{player}'s {type} speed set to {speed}."
+
+# Time / Weather
+time-set: "{prefix}&aTime set to {time}."
+time-reset: "{prefix}&aTime reset to normal."
+ptime-set: "{prefix}&a{player}'s personal time set to {time}."
+ptime-reset: "{prefix}&a{player}'s personal time reset."
+ptime-get: "{prefix}&e{player}'s personal time: {time}"
+ptime-normal: "{prefix}&e{player}'s time is normal."
+ptime-relative: "{prefix}&e{player}'s personal time: {time} (relative)"
+ptime-fixed: "{prefix}&e{player}'s personal time: {time} (fixed)"
+ptime-others-perm: "{prefix}&cYou need permission to change others' time."
+ptime-invalid: "{prefix}&cInvalid time format."
+weather-set: "{prefix}&aWeather set to {weather}."
+weather-clear: "{prefix}&aWeather cleared."
+
+# Vanish
+vanish-enabled: "{prefix}&aYou are now vanished."
+vanish-disabled: "{prefix}&aYou are no longer vanished."
+vanish-others: "{prefix}&a{player} is now vanished."
+vanish-others-off: "{prefix}&a{player} is no longer vanished."
+
+# Nickname
+nick-set: "{prefix}&aNickname set to {nick}."
+nick-removed: "{prefix}&aNickname removed."
+nick-in-use: "{prefix}&cThat nickname is already in use."
+nick-too-long: "{prefix}&cNickname is too long."
+nick-invalid: "{prefix}&cInvalid characters in nickname."
+
+# Clear / Item Commands
+item-given: "{prefix}&aGiven {amount} x {item} to {player}."
+item-received: "{prefix}&aYou received {amount} x {item}."
+clear-success: "{prefix}&aCleared {count} items from {player}."
+clear-inventory-empty: "{prefix}&a{player}'s inventory is already empty."
+
+# Repair
+repair-success: "{prefix}&aItem repaired."
+repair-all: "{prefix}&aAll items repaired."
+
+# Hat
+hat-success: "{prefix}&aYou are now wearing {item} as a hat."
+hat-removed: "{prefix}&aHat removed."
+hat-fail: "{prefix}&cCannot use this item as a hat."
+
+# Inventory (enderchest)
+enderchest-opened: "{prefix}&aOpening {player}'s ender chest."
+enderchest-usage: "&c/enderchest [player]"
+
+# Mail
+mail-no-mail: "{prefix}&7You have no mail."
+mail-sent: "{prefix}&aMail sent to {player}."
+mail-received: "{prefix}&aYou have received a mail from {sender}: {message}"
+mail-clear: "{prefix}&aMail cleared."
+mail-read-header: "{prefix}&e--- Mail (Page {page}) ---"
+mail-expired: "{prefix}&7[Mailing System] {message}"
+
+# Top / List
+list-header: "{prefix}&e--- Online Players ({online}/{max}) ---"
+list-player: "&f{player}"
+list-footer: ""
+
+# Help
+help-header: "{prefix}&e--- Help: {page}/{total} ---"
+help-cmd: "&e/{command} &7{description}"
+
+# Miscellaneous
+suicide: "{prefix}&cYou killed yourself."
+workbench: "{prefix}&aOpening workbench..."
+repair-usage: "&c/repair [hand|all]"
+invsee-usage: "&c/invsee <player>"
+
+# Random Teleport (RTP)
+rtp-teleported: "{prefix}&aRandomly teleported to ({x}, {y}, {z})."
+rtp-cooldown: "{prefix}&cYou must wait {seconds} seconds before using RTP again."
+rtp-failed: "{prefix}&cCould not find a safe location. Please try again."
+
+# Economy
+insufficient-balance: "{prefix}&cYou do not have enough money. Required: {amount}"
+economy-error: "{prefix}&cAn economy error occurred."
+
+# Kick / Ban / Jail / Unjail
+kick-sent: "{prefix}&c{player} has been kicked."
+kick-reason: "{prefix}&cYou have been kicked: {reason}"
+kick-exempt: "{prefix}&cThat player is exempt from being kicked."
+ban-sent: "{prefix}&c{player} has been banned."
+
+# Mute / Unmute
+mute-sent: "{prefix}&a{player} has been muted."
+unmute-sent: "{prefix}&a{player} has been unmuted."
+mute-expired: "{prefix}&aYou are no longer muted."
+player-muted: "{prefix}&cYou are muted and cannot chat."
+player-not-muted: "{prefix}&cThat player is not muted."
+
+# Jail / Unjail
+jail-sent: "{prefix}&a{player} has been jailed."
+jail-message: "{prefix}&cYou have been jailed: {reason}"
+jail-no-command: "{prefix}&cYou are jailed and cannot use commands."
+player-not-jailed: "{prefix}&cThat player is not jailed."
+unjail-sent: "{prefix}&a{player} has been released from jail."
+unjail-message: "{prefix}&aYou have been released from jail."
+
+# Custom Server Messages
+# MOTD shown in the server list (supports %server_name%, %server_online%, etc.)
+server-motd: "&6Welcome to &e%server_name%&6! &7Online: &f%server_online%&7/&f%server_max_players%"
+
+# Server shutdown message (broadcast to players)
+server-shutdown: "{prefix}&cThe server is shutting down. Please rejoin later."
+
+# Player kick/ban disconnect reasons
+kick-kick-message: "{prefix}&cYou have been kicked: {reason}"
+ban-kick-message: "{prefix}&cYou have been banned: {reason}"
+ban-disconnect: "{prefix}&cYou are banned from this server: {reason}"
+
+# Reload command
+reload-success: "{prefix}&aReloaded: &e{items}"

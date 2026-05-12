@@ -1,0 +1,85 @@
+# JWEssentials Configuration
+# ============================
+
+# General Settings
+general:
+  # Maximum number of homes a player can set (per permission tier)
+  default-home-limit: 3
+  # Spawn players to spawn point when they join (if defined)
+  spawn-on-join: false
+  # Default spawn point world (leave empty to use first available)
+  spawn-world: ""
+  # Cooldown (in seconds) for teleportation commands
+  teleport-delay: 0
+  # Enable teleportation safety check (warn if destination is unsafe)
+  teleport-safety-enabled: true
+  # Allow players to bypass world-permission checks for teleportation
+  world-teleport-permissions: true
+
+# Economy Integration
+economy:
+  # Whether to use JWEconomy for economy features
+  use-jweconomy: true
+  # Starting balance for new players (if no JWEconomy)
+  starting-balance: 1000.0
+
+# Chat Settings
+chat:
+  # Format of chat messages (placeholders: {prefix}, {displayname}, {message})
+  format: "{prefix}{displayname}: {message}"
+  # Maximum length of chat messages
+  max-length: 256
+  # Cooldown between messages (seconds)
+  message-cooldown: 0
+
+# Command Settings
+commands:
+  # Aliases for /msg command
+  msg-aliases: ["message", "whisper", "tell", "dm"]
+  # Aliases for /reply command
+  reply-aliases: ["r"]
+  # Aliases for /socialspy
+  socialspy-aliases: ["ss"]
+
+# Performance
+performance:
+  # Cache TTL in seconds
+  cache-ttl: 300
+  # Maximum cache entries
+  cache-max-size: 500
+
+# Random Teleport (RTP)
+rtp:
+  use-economy: true
+  # Cost for using RTP
+  cost: 0
+  # Maximum X distance from center
+  max-x: 10000
+  # Maximum Z distance from center
+  max-z: 10000
+  # Minimum Y level for teleport
+  min-y: 64
+  # Maximum Y level for teleport
+  max-y: 320
+  # Cooldown between RTP uses (seconds, 0 to disable)
+  cooldown-seconds: 30
+  # Center X coordinate for random teleport
+  center-x: 0
+  # Center Z coordinate for random teleport
+  center-z: 0
+  # Maximum attempts to find safe location
+  max-attempts: 10
+
+# Jail Settings
+jail:
+  # Jail X coordinate
+  x: 0
+  # Jail Y coordinate
+  y: 100
+  # Jail Z coordinate
+  z: 0
+  # Jail world name
+  world: "main"
+
+# Debug
+debug: false

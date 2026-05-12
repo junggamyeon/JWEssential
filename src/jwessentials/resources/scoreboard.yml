@@ -1,0 +1,67 @@
+# JWEssentials Scoreboard Configuration
+# ========================================
+#
+# Enable or disable the scoreboard and configure which placeholder
+# lines are displayed. Set any line to false to hide it.
+#
+# Available placeholders for score lines:
+#   %player_name%       - Player's display name
+#   %player_xuid%       - Xbox User ID
+#   %player_uuid%       - UUID string
+#   %player_health%     - Current health (integer)
+#   %player_max_health% - Max health
+#   %player_level%      - XP level
+#   %player_exp%        - Total XP points
+#   %player_ping%       - Latency in ms
+#   %player_world%      - World/level name
+#   %player_dimension%  - Dimension key (e.g. minecraft:overworld)
+#   %player_gamemode%   - Game mode
+#   %player_x%          - X coordinate (integer)
+#   %player_y%          - Y coordinate (integer)
+#   %player_z%          - Z coordinate (integer)
+#   %player_is_flying%  - "true" or "false"
+#   %player_is_sneaking% - "true" or "false"
+#   %player_is_op%      - "true" or "false"
+#   %server_name%      - Server name (from server.properties)
+#   %server_version%   - Endstone version
+#   %server_mc_version% - Minecraft version
+#   %server_online%     - Current online player count
+#   %server_max_players% - Max player slot
+#   %server_port%       - Server port
+
+# Enable or disable the scoreboard feature
+enabled: true
+
+# The objective display name shown at the top of the sidebar
+display-name: "&6&lInfo"
+
+# The scoreboard slot: "sidebar" (default), "belowname", "list"
+slot: "sidebar"
+
+# Whether scores are sorted ascending or descending
+# true = ascending, false = descending
+ascending: false
+
+# Lines to display (order = top to bottom).
+# Set a line to false to hide it.
+# Lines are rendered in order from top to bottom.
+lines:
+  - "&7&m--------------------"
+  - "&ePlayer: &f%player_name%"
+  - "&eHealth: &f%player_health%&c/&f%player_max_health%"
+  - "&eXP Level: &f%player_level% &7(&e%player_exp% XP&7)"
+  - "&ePing: &f%player_ping%ms"
+  - "&eLocation: &f%player_x%, %player_y%, %player_z%"
+  - "&eWorld: &f%player_world%"
+  - "&eDimension: &f%player_dimension%"
+  - "&eGameMode: &f%player_gamemode%"
+  - "&eFlying: &f%player_is_flying%"
+  - "&eSneaking: &f%player_is_sneaking%"
+  - "&eOperator: &f%player_is_op%"
+  - "&7&m--------------------"
+  - "&6Server: &f%server_name%"
+  - "&6Online: &f%server_online%&7/&f%server_max_players%"
+  - "&6Version: &f%server_mc_version%"
+  - "&6Port: &f%server_port%"
+  - - false
+  - "&7&m--------------------"

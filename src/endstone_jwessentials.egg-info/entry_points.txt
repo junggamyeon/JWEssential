@@ -1,0 +1,2 @@
+[endstone]
+jwessentials = jwessentials.main:JWEssentials
