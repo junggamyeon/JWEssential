@@ -17,6 +17,17 @@ It brings a complete Essentials-style experience to Bedrock servers running Ends
 
 ---
 
+## 📦 Dependencies
+
+Required plugins:
+
+- [JWEconomy](https://github.com/junggamyeon/JWEconomy?utm_source=chatgpt.com)
+- [InventoryUI](https://github.com/junggamyeon/InventoryUI?utm_source=chatgpt.com)
+
+JWEssentials may not function correctly if these dependencies are missing.
+
+---
+
 ## 🚀 Features
 
 ### 🧭 Teleportation System
@@ -212,14 +223,3 @@ Features:
 - Send mail to offline players
 - Persistent storage
 - Mail notifications
-
----
-
-## 📦 Dependencies
-
-Required plugins:
-
-- [JWEconomy](https://github.com/junggamyeon/JWEconomy?utm_source=chatgpt.com)
-- [InventoryUI](https://github.com/junggamyeon/InventoryUI?utm_source=chatgpt.com)
-
-JWEssentials may not function correctly if these dependencies are missing.
