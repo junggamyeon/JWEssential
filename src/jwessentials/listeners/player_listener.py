@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from endstone.event import PlayerJoinEvent, PlayerQuitEvent, PlayerChatEvent, PlayerCommandEvent, PlayerMoveEvent, ServerListPingEvent, event_handler
+from endstone.event import PlayerJoinEvent, PlayerQuitEvent, PlayerChatEvent, PlayerCommandEvent, PlayerMoveEvent, ServerListPingEvent, PlayerDeathEvent, event_handler
 
 if TYPE_CHECKING:
     from jwessentials.main import JWEssentials
@@ -20,22 +20,36 @@ class PlayerListener:
         xuid = player.xuid
         username = player.name
 
+        # Mute default join message so we can broadcast custom message asynchronously
+        event.join_message = ""
+
         def init():
             if not hasattr(self._plugin, "_profile_repo") or not hasattr(self._plugin, "_socialspy_repo"):
                 self._plugin.logger.warning(f"Repos not ready for {username}, skipping init")
                 return
-            try:
-                self._plugin.run_async(
-                    self._plugin._profile_repo.upsert_profile(uuid, xuid, username)
-                )
-            except Exception as e:
-                self._plugin.logger.error(f"Error initializing player {username}: {e}")
 
-            try:
-                self._plugin.run_async(self._load_socialspy(uuid))
-                self._plugin.run_async(self._load_vanish_state(player, uuid))
-            except Exception as e:
-                self._plugin.logger.error(f"Error loading states for {username}: {e}")
+            async def do_init():
+                try:
+                    profile = await self._plugin._profile_repo.get_profile(uuid)
+                    is_first = (profile is None)
+                    await self._plugin._profile_repo.upsert_profile(uuid, xuid, username)
+                    await self._load_socialspy(uuid)
+                    await self._load_vanish_state(player, uuid)
+                    
+                    def broadcast():
+                        if is_first:
+                            msg = self._plugin.msg("first-join-message", player=username)
+                        else:
+                            msg = self._plugin.msg("join-message", player=username)
+                            
+                        if msg and msg.strip():
+                            self._plugin.server.broadcast_message(msg)
+                            
+                    self._plugin.server.scheduler.run_task(self._plugin, broadcast)
+                except Exception as e:
+                    self._plugin.logger.error(f"Error initializing player {username}: {e}")
+
+            self._plugin.run_async(do_init())
 
         self._plugin.server.scheduler.run_task(self._plugin, init)
 
@@ -75,6 +89,11 @@ class PlayerListener:
         player = event.player
         uuid = str(player.unique_id)
         username = player.name.lower()
+
+        event.quit_message = ""
+        msg = self._plugin.msg("quit-message", player=player.name)
+        if msg and msg.strip():
+            self._plugin.server.broadcast_message(msg)
 
         self._plugin._afk_players.pop(username, None)
         self._plugin._socialspy_cache.pop(uuid, None)
@@ -173,3 +192,27 @@ class PlayerListener:
             text = text.replace(ph, value)
         text = text.replace("&", "§")
         event.motd = text
+
+    @event_handler
+    def on_player_death(self, event: PlayerDeathEvent) -> None:
+        player = event.player
+        source = event.damage_source
+        
+        damage_type = "default"
+        if source:
+            damage_type = str(source.type).lower()
+            
+        killer_name = "một thế lực bí ẩn"
+        if source and getattr(source, "actor", None):
+            killer_name = source.actor.name
+            
+        key = f"death-{damage_type}"
+        # Fallback to death-default if key not present in config
+        if key not in self._plugin._messages and getattr(self._plugin._message_formatter, "_messages", {}).get(key) is None:
+            # Check default fallback explicitly
+            if self._plugin._message_formatter._get_raw(key) == "":
+                key = "death-default"
+            
+        custom_message = self._plugin.msg(key, player=player.name, message=event.death_message, killer=killer_name)
+        if custom_message and custom_message.strip() and not custom_message.startswith("§cMissing message:"):
+            event.death_message = custom_message

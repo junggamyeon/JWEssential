@@ -133,7 +133,7 @@ class BossbarHandler:
 
             player = FakePlayer()
 
-        return _resolve(self._title_template, player, self._plugin.server)
+        return _resolve(self._title_template, player, self._plugin.server).replace("&", "§")
 
     def _schedule_refresh(self) -> None:
         if self._refresh_task_handle:

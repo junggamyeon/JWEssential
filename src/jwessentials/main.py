@@ -24,7 +24,7 @@ from jwessentials.commands.utility_commands import (
     GodCommandHandler, HealCommandHandler, GameModeCommandHandler,
     FlyCommandHandler, SpeedCommandHandler, NickCommandHandler, VanishCommandHandler,
     KillCommandHandler, ClearCommandHandler, HatCommandHandler, RepairCommandHandler,
-    InvSeeCommandHandler, EnderChestCommandHandler,
+    InvSeeCommandHandler, EnderChestCommandHandler, EnchantCommandHandler,
 )
 from jwessentials.commands.warp_commands import WarpCommandHandler, SetWarpCommandHandler, DelWarpCommandHandler
 from jwessentials.commands.moderation_commands import (
@@ -56,8 +56,8 @@ if TYPE_CHECKING:
 class JWEssentials(Plugin):
 
     api_version = "0.11"
-    prefix = "§6§l[JWEssentials]§r"
-    version = "1.0.0"
+    prefix = "[JWEssentials]"
+    version = "2.0.0"
     description = "JWEssentials - Essential commands plugin for EndstoneMC, inspired by EssentialsX."
     authors = ["JWDev"]
     depend = ["jweconomy"]
@@ -235,6 +235,12 @@ class JWEssentials(Plugin):
             "description": "Open ender chest",
             "usages": ["/enderchest [player: string]"],
         },
+        "jwenchant": {
+            "description": "Enchant an item",
+            "usages": ["/jwenchant <player: string> <enchantmentName: string> <level: int>"],
+            "permissions": ["jwessentials.enchant"],
+            "aliases": ["jwec"],
+        },
         "jwwtime": {
             "description": "Set world time",
             "usages": ["/jwwtime set <time: string>", "/jwwtime add <ticks: int>"],
@@ -367,6 +373,7 @@ class JWEssentials(Plugin):
                 "jwessentials.repair": True,
                 "jwessentials.invsee": True,
                 "jwessentials.enderchest": True,
+                "jwessentials.enchant": True,
                 "jwessentials.time": True,
                 "jwessentials.ptime": True,
                 "jwessentials.weather": True,
@@ -418,6 +425,7 @@ class JWEssentials(Plugin):
         "jwessentials.invsee": {"description": "View player inventory", "default": "op"},
         "jwessentials.enderchest": {"description": "Open ender chest", "default": "true"},
         "jwessentials.enderchest.others": {"description": "Open others ender chest", "default": "op"},
+        "jwessentials.enchant": {"description": "Use /jwenchant command", "default": "op"},
         "jwessentials.time": {"description": "Set world time", "default": "op"},
         "jwessentials.ptime": {"description": "Set personal time", "default": "true"},
         "jwessentials.ptime.others": {"description": "Set others personal time", "default": "op"},
@@ -545,6 +553,7 @@ class JWEssentials(Plugin):
         self._cmd_repair = RepairCommandHandler(self)
         self._cmd_invsee = InvSeeCommandHandler(self)
         self._cmd_enderchest = EnderChestCommandHandler(self)
+        self._cmd_enchant = EnchantCommandHandler(self)
         self._cmd_time = TimeCommandHandler(self)
         self._cmd_ptime = PTimeCommandHandler(self)
         self._cmd_weather = WeatherCommandHandler(self)
@@ -664,6 +673,8 @@ class JWEssentials(Plugin):
             "jwrepair": self._cmd_repair,
             "invsee": self._cmd_invsee,
             "enderchest": self._cmd_enderchest,
+            "jwenchant": self._cmd_enchant,
+            "enchant": self._cmd_enchant,
             "jwwtime": self._cmd_time,
             "jwwt": self._cmd_time,
             "jwptime": self._cmd_ptime,

@@ -74,10 +74,10 @@ def _resolve(text: str, player, server) -> str:
     return result
 
 
-def _strip_color(text: str) -> str:
+def _translate_colors(text: str) -> str:
     if not isinstance(text, str):
         return str(text)
-    return re.sub(r"§[0-9a-fr]", "", text)
+    return text.replace("&", "§")
 
 
 class ScoreboardHandler:
@@ -143,7 +143,7 @@ class ScoreboardHandler:
         objective = scoreboard.add_objective(
             self._OBJ_NAME,
             Criteria.DUMMY,
-            _strip_color(self._display_name),
+            _translate_colors(self._display_name),
             RenderType.INTEGER,
         )
         objective.set_display(self._slot, sort_order)
@@ -184,7 +184,7 @@ class ScoreboardHandler:
 
         # Update display name (supports flicker titles later)
         try:
-            objective.display_name = _strip_color(self._display_name)
+            objective.display_name = _translate_colors(self._display_name)
         except Exception:
             pass
 
@@ -199,7 +199,7 @@ class ScoreboardHandler:
 
         for i, raw_line in enumerate(self._lines):
             text = _resolve(raw_line, player, server)
-            entry = _strip_color(text)
+            entry = _translate_colors(text)
 
             # Avoid duplicate lines by appending invisible spaces
             entry = entry + (" " * i)

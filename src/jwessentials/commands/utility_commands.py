@@ -591,3 +591,47 @@ class EnderChestCommandHandler:
         menu.set_close_listener(on_close)
         menu.send_to(player)
         return True
+
+
+class EnchantCommandHandler:
+
+    def __init__(self, plugin: JWEssentials) -> None:
+        self._plugin = plugin
+
+    def handle(self, sender: CommandSender, args: list[str]) -> bool:
+        if len(args) < 3:
+            sender.send_message("§c/jwenchant <player> <enchantmentName> <level>")
+            return True
+
+        target_name = args[0]
+        enchant_name = args[1].lower()
+        
+        try:
+            level = int(args[2])
+        except ValueError:
+            sender.send_message("§cLevel must be an integer.")
+            return True
+
+        target = self._plugin.server.get_player(target_name)
+        if target is None:
+            sender.send_message(self._plugin.msg("player-not-found", player=target_name))
+            return True
+
+        item = target.inventory.item_in_main_hand
+        if item is None or (hasattr(item, "type") and "air" in item.type.id.lower()):
+            sender.send_message("§cPlayer is not holding any item.")
+            return True
+
+        if hasattr(item, "item_meta"):
+            meta = item.item_meta
+            success = meta.add_enchant(enchant_name, level, force=True)
+            if success:
+                item.set_item_meta(meta)
+                target.inventory.item_in_main_hand = item
+                sender.send_message(f"§aApplied enchantment {enchant_name} level {level} to {target.name}'s item.")
+            else:
+                sender.send_message(f"§cFailed to apply enchantment {enchant_name}. Invalid enchantment name?")
+        else:
+            sender.send_message("§cThis item cannot be enchanted.")
+        return True
+

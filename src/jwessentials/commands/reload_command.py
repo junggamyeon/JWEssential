@@ -48,7 +48,6 @@ class ReloadCommandHandler:
     def _reload_config(self) -> None:
         try:
             self._plugin._config_loader.reload()
-            self._plugin.logger.info("Config reloaded.")
         except Exception as e:
             self._plugin.logger.error(f"Failed to reload config: {e}")
 
@@ -66,7 +65,6 @@ class ReloadCommandHandler:
             loader = MessagesLoader(self._plugin.data_folder, self._plugin.logger)
             self._plugin._messages = loader.load(defaults)
             self._plugin._message_formatter.reload(self._plugin._messages)
-            self._plugin.logger.info("Messages reloaded.")
         except Exception as e:
             self._plugin.logger.error(f"Failed to reload messages: {e}")
 
@@ -75,7 +73,6 @@ class ReloadCommandHandler:
             if hasattr(self._plugin, "_scoreboard_handler"):
                 self._plugin._scoreboard_handler.disable()
                 self._plugin._scoreboard_handler.load()
-            self._plugin.logger.info("Scoreboard reloaded.")
         except Exception as e:
             self._plugin.logger.error(f"Failed to reload scoreboard: {e}")
 
@@ -84,6 +81,5 @@ class ReloadCommandHandler:
             if hasattr(self._plugin, "_bossbar_handler"):
                 self._plugin._bossbar_handler.disable()
                 self._plugin._bossbar_handler.load()
-            self._plugin.logger.info("Bossbar reloaded.")
         except Exception as e:
             self._plugin.logger.error(f"Failed to reload bossbar: {e}")

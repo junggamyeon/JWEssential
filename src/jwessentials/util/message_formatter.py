@@ -4,7 +4,6 @@ from typing import Any
 
 from jwessentials.util.config_loader import ConfigLoader as _ConfigLoader
 
-
 _DEFAULT_MESSAGES = {
     "prefix": "&6&l[JWEssentials]&r ",
     "error-generic": "{prefix}&cAn internal error occurred. Please try again.",
@@ -18,9 +17,31 @@ _DEFAULT_MESSAGES = {
     "home-teleported": "{prefix}&aTeleporting to home '{name}'...",
     "warp-teleported": "{prefix}&aWarping to '{name}'...",
     "spawn-teleported": "{prefix}&aTeleporting to spawn...",
+    "join-message": "&e{player} joined the server.",
+    "first-join-message": "&dWelcome {player} to the server for the first time!",
+    "quit-message": "&e{player} left the server.",
+    "death-default": "&c☠ &7{message}",
+    "death-fall": "&c{player} fell from a high place.",
+    "death-lava": "&c{player} tried to swim in lava.",
+    "death-drowning": "&c{player} drowned.",
+    "death-suffocation": "&c{player} suffocated.",
+    "death-fire": "&c{player} went up in flames.",
+    "death-fire_tick": "&c{player} burned to death.",
+    "death-starve": "&c{player} starved to death.",
+    "death-entity_attack": "&c{player} was slain by {killer}.",
+    "death-projectile": "&c{player} was shot by {killer}.",
+    "death-entity_explosion": "&c{player} was blown up by {killer}.",
+    "death-block_explosion": "&c{player} blew up (possibly from a bed explosion).",
+    "death-freezing": "&c{player} froze to death.",
+    "death-lightning": "&c{player} was struck by lightning.",
+    "death-magic": "&c{player} was killed by magic.",
+    "death-wither": "&c{player} withered away.",
+    "death-void": "&c{player} fell out of the world.",
+    "death-suicide": "&c{player} died by suicide.",
+    "death-fly_into_wall": "&c{player} flew into a wall.",
+    "death-thorns": "&c{player} was killed trying to hurt {killer}.",
+    "death-sonic_boom": "&c{player} was obliterated by Warden's sonic boom.",
 }
-
-
 class MessageFormatter:
 
     def __init__(self, messages: dict[str, str]) -> None:
